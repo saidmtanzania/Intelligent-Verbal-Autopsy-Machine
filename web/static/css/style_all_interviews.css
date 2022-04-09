@@ -1,0 +1,63 @@
+body{
+	margin:0px;
+	padding: 0px;
+	background-color: rgb(16, 38, 56);
+	overflow: hidden;
+	font-family: system-ui;
+}
+.clearfix{
+	clear: both;
+}
+
+.head{
+	padding:20px;
+}
+.col-div-6{
+	width: 50%;
+	float: left;
+}
+
+
+.col-div-8{
+	width: 100%;
+}
+
+.content-box{
+	padding: 20px;
+	font-size: 90%;
+}
+
+
+.box-8, .box-4{
+	width: 97%;
+	background-color: #440606;
+	height: fit-content;
+	overflow-x: auto;
+	overflow-y: auto;
+	/* overflow: hidden; */
+	display: block;
+	padding: 0.5%;
+	white-space: nowrap;
+	}
+
+tr:hover {background-color: rgb(54, 3, 3);}
+
+.nav2{
+	display: none;
+}
+
+.box-8{
+	margin-left: 10px;
+}
+table {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  
+}
+td, th {
+  text-align: left;
+  padding:15px;
+  color: #ddd;
+  border-bottom: 1px solid #fffefe40;
+}

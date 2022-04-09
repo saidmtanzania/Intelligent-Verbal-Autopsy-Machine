@@ -1,0 +1,10 @@
+re
+flask
+numpy
+pymsql
+pandas
+pickle
+sklearn
+flask_mysqldb
+sqlalchemy
+lightgbm

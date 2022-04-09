@@ -1,0 +1,136 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: 'Poppins', sans-serif;
+	background-color: black;
+	background-image: linear-gradient(rgb(0, 47, 255), black);
+}
+.wrapper {
+	/* width: 1170px; */
+	margin: auto;
+}
+header {
+	/* background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(https://i.postimg.cc/YjcJg24M/aa.jpg); */
+	height: 100vh;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	position: relative;
+}
+
+.logo {
+	float: left;
+	font-size: x-large;
+	font-family: 'Poppins', sans-serif;
+	color: white;
+	margin: 2%;
+}
+
+.username {
+	float: right;
+	/* font-size: large; */
+	font-family: 'Poppins', sans-serif;
+	color: white;
+	margin: 2%;
+}
+
+
+.logo img {
+	width: 100%;
+	padding: 15px 0;
+}
+
+.title{
+	position: absolute;
+	text-align: center;
+	margin-top: 5%;
+}
+
+.title h2{
+	text-align: center;
+	width: 80%;
+	height: 70vh;
+	margin-top: 5%;
+}
+
+.welcome-text {
+	position: absolute;
+	width: 80%;
+	height: 70vh;
+	margin: 10%;
+	text-align: center;
+}
+
+.welcome-text a {
+	border: 1px solid #fff;
+	padding: 2% 4%;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: larger;
+	margin-top: 20px;
+	border-radius: 1.5em;
+	display: inline-block;
+	color: #fff;
+}
+.welcome-text a:hover {
+	background: #fff;
+	color: #333;
+}
+
+.table-container{
+	overflow-x: auto;
+	/* overflow: hidden; */
+	display: block;
+	padding: 0.5%;
+	white-space: nowrap;
+	background-color: whitesmoke;
+}
+
+
+tr:hover {background-color: grey;}
+
+
+th, td {
+	padding: .3em;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+  }
+
+.table-container table{
+	border-style: none;
+	width: 100%;
+	border-collapse: collapse;
+
+}
+.table-container th {
+	background-color: #434247;
+	color: white;
+  }
+
+
+/*resposive*/
+
+@media (max-width:600px) {
+	.wrapper {
+		width: 100%;
+	}
+	.logo {
+		float: none;
+		width: 50%;
+		text-align: center;
+		margin: auto;
+	}
+
+	.welcome-text {
+		width: 100%;
+		height: 50%;
+		margin: 30% 0;
+		position: relative;
+		overflow: hidden;
+	}
+	.welcome-text h1 {
+		font-size: 30px;
+	}
+}

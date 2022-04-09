@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--Code by Divinector (www.divinectorweb.com)-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IVAM | Homepage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+
+    <!-- <link rel="stylesheet" href="style_home.css">     -->
+    <link rel="stylesheet" href="{{url_for('static', filename='/css/style_interviews_user.css')}}"/>
+</head>
+<body>
+    <header>
+    <div class="wrapper">
+        <div class="logo">
+            IVAM | INTELLIGENT VERBAL AUTOPSY MACHINE
+            <br><br>
+            <h6>MY INTERVIEWS</h6>
+        </div>
+
+        <div class="username">
+            <b style="color: white;">{{user}}</b>
+        </div>
+    </div>
+    
+
+    <div class="table-container welcome-text">
+         <br>
+        {% for table in tables %}
+                <!-- {{titles[loop.index]}} -->
+                {{ table|safe }}
+        {% endfor %}
+    </div>
+
+
+    
+</header>
+<footer style="color: white; text-align:center; margin-bottom:1%">&copy2021</footer>
+</body>
+</html>

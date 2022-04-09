@@ -1,0 +1,98 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: 'Poppins', sans-serif;
+	background-color: black;
+	background-image: linear-gradient(white, #3750e0);
+}
+.wrapper {
+	/* width: 1170px; */
+	margin: auto;
+}
+header {
+	/* background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(https://i.postimg.cc/YjcJg24M/aa.jpg); */
+	height: 100vh;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	position: relative;
+}
+
+.logo {
+	float: left;
+	font-size: x-large;
+	font-family: 'Poppins', sans-serif;
+	color: blue;
+	margin: 2%;
+}
+
+.username {
+	float: right;
+	/* font-size: large; */
+	font-family: 'Poppins', sans-serif;
+	color: white;
+	margin: 2%;
+}
+
+
+.logo img {
+	width: 100%;
+	padding: 15px 0;
+}
+.welcome-text {
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	margin: 20% 25%;
+	text-align: center;
+}
+.welcome-text h1 {
+	text-align: center;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 60px;
+}
+.welcome-text h1 span {
+	color: blue;
+}
+.welcome-text a {
+	border: 1px solid #fff;
+	padding: 2% 4%;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: larger;
+	margin-top: 20px;
+	border-radius: 1.5em;
+	display: inline-block;
+	color: #fff;
+}
+.welcome-text a:hover {
+	background: #fff;
+	color: #333;
+}
+/*resposive*/
+
+@media (max-width:600px) {
+	.wrapper {
+		width: 100%;
+	}
+	.logo {
+		float: none;
+		width: 50%;
+		text-align: center;
+		margin: auto;
+	}
+
+	.welcome-text {
+		width: 100%;
+		height: 50%;
+		margin: 30% 0;
+		position: relative;
+		overflow: hidden;
+	}
+	.welcome-text h1 {
+		font-size: 30px;
+	}
+}

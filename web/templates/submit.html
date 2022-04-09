@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Slab&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{url_for('static', filename='/css/style_submit.css')}}"/>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body >
+    <div class="container">
+        <header>
+            <h1>Submit Prediction</h1><br>
+            <h2></h2>
+        </header>
+
+
+        <div class="content">
+            <div class="content-form">
+                <section>
+                    <h2 class="m_data_heads">Machine Prediction</h2>
+                    <p class="from_model">
+                        <b>{{pred}}</b><br>  
+                    </p>
+                </section>
+
+                <section>
+                   <h2 class="m_data_heads">Confidence (out of 33 Classes)</h2>
+                    <p class="from_model"><b>{{proba}}</b></p>
+                </section>
+
+                <section>
+                    <h3><u>Prediction Summary</u></h3>
+                    <!-- Please add the other predictions here below -->
+                    <p>&nbsp;  {{p1}} </p>
+                    <p>&nbsp;  {{p2}} </p>
+                    <p>&nbsp;  {{p3}} </p>
+                    <p>&nbsp;  {{p4}} </p>
+                    <p>&nbsp;  {{p5}} </p>
+                    <p>&nbsp;   ................................................</p>
+
+                </section>
+            </div>
+        </div>
+
+      <form action="/submit" method="POST">      
+          <div class="form">
+            <div class="right">
+              <div class="contact-form">
+                  <input type="text" name="interviewee_name" required>
+                  <span>Full Name of Interviewee</span>
+              </div>
+  
+              <div class="contact-form">
+                  <input type="tel" name="phone" placeholder="+255 XXX XXX XXX" required>
+                  <span>Phone Number</span>
+              </div>
+
+              <div class="contact-form">
+                <input type="text" name="location" required>
+                <span>Interview Location</span>
+            </div>
+
+              <div class="contact-form">
+                  <input type="textarea" name="text">
+                    
+                  <!-- </textarea> -->
+                  <span>Extra Comment Regarding the Interview</span>
+              </div>
+  
+              <div class="contact-form">
+                  <input type="submit" value="submit">
+              </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="empty">
+
+        </div>
+    </div>    
+</body>
+</html>

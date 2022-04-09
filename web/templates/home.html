@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--Code by Divinector (www.divinectorweb.com)-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IVAM | Homepage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+
+    <!-- <link rel="stylesheet" href="style_home.css">     -->
+    <link rel="stylesheet" href="{{url_for('static', filename='/css/style_home.css')}}"/>
+</head>
+<body>
+    <header>
+    <div class="wrapper">
+        <div class="logo">
+            IVAM | INTELLIGENT VERBAL AUTOPSY MACHINE
+        </div>
+
+        <div class="username">
+            <b style="color: black;">{{user}}</b>
+        </div>
+    </div>
+<div class="welcome-text">
+
+        <h1>IVAM DATA
+            <span>ANALYZER</span>
+        </h1>
+        <p style="color: white;">
+            The <span style="color: yellow;">AI-Powered</span> Verbal Autopsy assistant for automated 
+            determination of the <span>causes of deaths.</span>
+        </p>
+
+        <a href="/interview">PERFORM NEW INTERVIEW</a> <br>
+        <a href="/interviews_user">VIEW PREVIOUS INTERVIEWS</a>
+
+    </div>
+</header>
+<footer style="color: white; text-align:center; margin-bottom:1%">&copy2021</footer>
+</body>
+</html>

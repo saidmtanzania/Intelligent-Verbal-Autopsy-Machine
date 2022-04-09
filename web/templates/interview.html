@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="assets/css/style.css" /> -->
+    <!-- <script src="assets/js/script.js" defer></script> -->
+    <script src="{{url_for('static', filename='/js/script_iv.js')}}" defer></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='/css/style_interview.css')}}"/>
+
+    <title>VA Interview For Cause of Death</title>
+  </head>
+  <body>
+
+    <form action="/predict" class="form" method="POST">
+        <h3 class="text-center">Verbal Autopsy Interview</h3>
+        
+      <!-- Progress bar -->
+      <div class="progressbar">
+        <div class="progress" id="progress"></div>
+        
+        <div class="progress-step progress-step-active" data-title="Baisc Info">
+        </div>
+
+        <div class="progress-step" data-title="Diseases"></div>
+        <div class="progress-step" data-title="Conditions1"></div>
+        <div class="progress-step" data-title="Conditions2"></div>
+      </div>
+
+      <!-- Steps -->
+      <div class="form-step form-step-active">
+        <div class="input-group">
+          <!-- birth year g1_01y-->
+          <br>Which year was the deceased born? <br>
+          <input type="number" class="text-box " name="byear" placeholder="Input Birth Year of The Deaceased" required>
+        </div>
+
+        <div class="input-group">
+        <!-- Sex of deceased g1_05-->
+        <br> Sex of the Deceased?        <br>
+        <input type="radio" name="sex" value="1" required>Male  
+        <input type="radio" name="sex" value="0" required>Female     <br>
+        </div>
+
+        <div class="input-group">
+          <!-- death year g1_06y-->
+          <br>Which year did the deceased die? <br>
+          <input type="number" name="dyear" class="text-box" placeholder="Input Death Year of The Deaceased" required><br>
+        </div>
+
+          <div class="input-group">
+            <!-- death year g1_07a-->
+            <br>Last known age of the deceased [years]<br>
+            <input type="number" name="age" class="text-box" placeholder="Last Known Age (years)" required>
+            <br>
+          </div>
+
+          <div class="input-group">
+            <!-- Marital Status g1_08-->
+            <br>Marital status of deceased        <br>
+            <input type="radio" name="marital" value="0" required>Never Married  <br>
+            <input type="radio" name="marital" value="1">Married     <br>
+            <input type="radio" name="marital" value="2">Divorced       <br>
+            <input type="radio" name="marital" value="3">Separated     <br>
+            <input type="radio" name="marital" value="4">Widowed     <br>
+            <input type="radio" name="marital" value="999">Unknown     <br>
+          </div>
+
+          <div class="input-group">
+            <!-- Level of Education g1_09-->
+            <br>
+            Last known level of education completed        <br>
+            <input type="radio" name="edlevel" value="0" required>No Schooling  <br>
+            <input type="radio" name="edlevel" value="1">Primary School     <br>
+            <input type="radio" name="edlevel" value="2">High School       <br>
+            <input type="radio" name="edlevel" value="3">College or Higher     <br>
+            <input type="radio" name="edlevel" value="999">Unknown     <br>
+          </div>
+
+          <div class="input-group">
+            <!-- death year g1_10-->
+            <br>Number of years of education completed<br>
+            <input type="number" class="text-box" name="edyears" placeholder="No. of Education Years" required>
+            <br>
+          </div>
+
+          <div class="input-group">
+            <!-- sex of the respondent g4_02-->
+            <br> Sex of the Respondent?        <br>
+            <input type="radio" name="sex_resp" value="1" required>Male 
+            <input type="radio" name="sex_resp" value="0">Female  <br>
+          </div>
+
+          <div class="input-group">
+            <!-- What is your respondent's relationship to the deceased? g4_03a-->
+            <br>What is your respondent's relationship to the deceased?<br>
+            <input type="radio" name="relat" value="1" required>Mother<br>
+            <input type="radio" name="relat" value="2">Father<br>
+            <input type="radio" name="relat" value="3">Grandmother<br>
+            <input type="radio" name="relat" value="4">GrandFather<br>
+            <input type="radio" name="relat" value="5">Aunt<br>
+            <input type="radio" name="relat" value="6">Uncle<br>
+            <input type="radio" name="relat" value="7">Husband<br>
+            <input type="radio" name="relat" value="8">Wife<br>
+            <input type="radio" name="relat" value="9">Brother<br>
+            <input type="radio" name="relat" value="10">Sister<br>
+            <input type="radio" name="relat" value="11">Birth Attendant<br>
+            <input type="radio" name="relat" value="12">Other Male<br>
+            <input type="radio" name="relat" value="13">Other Female<br>
+          </div>
+
+          <div class="btns-group">
+            <!-- <a href="#" class="btn btn-prev">Previous</a> -->
+            <a href="#" class="btn btn-next">Next</a>
+          </div>
+
+      </div>
+<!-- 
+      <div >
+        <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
+      </div> -->
+
+
+      <div class="form-step">
+        <div class="input-group">
+          <!-- Asthma a1_01_1-->
+          Did the deceased has asthma?        <br>
+          <input type="radio" name="asthma" value="1" required>Yes  <br>
+          <input type="radio" name="asthma" value="0">No     <br>
+          <input type="radio" name="asthma" value="9">Dont Know       <br>
+          <input type="radio" name="asthma" value="8">Refused To Answer     <br>
+        </div>
+
+        <div class="input-group">
+          <!-- Artritis a1_01_2-->
+          <br>
+          Did Decedent Have Arthritis?        <br>
+          <input type="radio" name="arthritis" value="1" required>Yes  <br>
+          <input type="radio" name="arthritis" value="0">No     <br>
+          <input type="radio" name="arthritis" value="9">Dont Know       <br>
+          <input type="radio" name="arthritis" value="8">Refused To Answer     <br>
+        </div>
+
+
+        <div class="input-group">
+          <!-- Cancer a1_01_3-->
+          <br>
+          Did Decedent Have Cancer?        <br>
+          <input type="radio" name="cancer" value="1" required>Yes  <br>
+          <input type="radio" name="cancer" value="0">No     <br>
+          <input type="radio" name="cancer" value="9">Dont Know       <br>
+          <input type="radio" name="cancer" value="8">Refused To Answer     <br>
+        </div>
+
+        <div class="input-group">
+          <!-- COPD a1_01_4-->
+          <br>
+          Did Decedent Have COPD?        <br>
+          <input type="radio" name="copd" value="1" required>Yes  <br>
+          <input type="radio" name="copd" value="0">No     <br>
+          <input type="radio" name="copd" value="9">Dont Know       <br>
+          <input type="radio" name="copd" value="8">Refused To Answer     <br>
+        </div>
+  
+        <div class="input-group">
+          <!-- Dementia a1_01_5-->
+          <br>
+          Did Decedent Have Dementia?        <br>
+          <input type="radio" name="dementia" value="1" required>Yes  <br>
+          <input type="radio" name="dementia" value="0">No     <br>
+          <input type="radio" name="dementia" value="9">Dont Know       <br>
+          <input type="radio" name="dementia" value="8">Refused To Answer     <br>
+        </div>
+
+        <div class="input-group">
+          <!-- Depression a1_01_6-->
+          <br>
+          Did Decedent Have Depression?        <br>
+          <input type="radio" name="depression" value="1" required>Yes  <br>
+          <input type="radio" name="depression" value="0">No     <br>
+          <input type="radio" name="depression" value="9">Dont Know       <br>
+          <input type="radio" name="depression" value="8">Refused To Answer     <br>
+        </div>
+
+
+        <div class="input-group">
+          <!-- Diabetes a1_01_7-->
+          <br>
+          Did Decedent Have Diabetes?        <br>
+          <input type="radio" name="diabetes" value="1" required>Yes  <br>
+          <input type="radio" name="diabetes" value="0">No     <br>
+          <input type="radio" name="diabetes" value="9">Dont Know       <br>
+          <input type="radio" name="diabetes" value="8">Refused To Answer     <br>
+        </div>
+
+        <div class="input-group">
+          <!-- Epilepsy a1_01_8-->
+          <br>
+          Did Decedent Have Epilepsy?        <br>
+          <input type="radio" name="epilepsy" value="1" required>Yes  <br>
+          <input type="radio" name="epilepsy" value="0">No     <br>
+          <input type="radio" name="epilepsy" value="9">Dont Know       <br>
+          <input type="radio" name="epilepsy" value="8">Refused To Answer     <br>
+        </div>
+
+        <div class="input-group">
+          <!-- Heart Disease a1_01_9-->
+          <br>
+          Did Decedent Have Heart Disease?        <br>
+          <input type="radio" name="heart_disease" value="1" required>Yes  <br>
+          <input type="radio" name="heart_disease" value="0">No     <br>
+          <input type="radio" name="heart_disease" value="9">Dont Know       <br>
+          <input type="radio" name="heart_disease" value="8">Refused To Answer     <br>
+        </div>
+
+        <div class="input-group">
+          <!-- Hypertension a1_01_10 -->
+          <br>
+          Did Decedent Have Hypertension?        <br>
+          <input type="radio" name="Hypertension" value="1" required>Yes  <br>
+          <input type="radio" name="Hypertension" value="0">No     <br>
+          <input type="radio" name="Hypertension" value="9">Dont Know       <br>
+          <input type="radio" name="Hypertension" value="8">Refused To Answer     <br>
+        </div>
+
+        <div class="input-group">
+          <!-- Obesity a1_01_11 -->
+          <br>
+          Did Decedent Have Obesity?        <br>
+          <input type="radio" name="obesity" value="1" required>Yes  <br>
+          <input type="radio" name="obesity" value="0">No     <br>
+          <input type="radio" name="obesity" value="9">Dont Know       <br>
+          <input type="radio" name="obesity" value="8">Refused To Answer     <br>
+        </div>
+
+        <div class="input-group">
+          <!--Stroke a1_01_12 -->
+          <br>
+          Did Decedent Have Stroke?        <br>
+          <input type="radio" name="stroke" value="1" required>Yes  <br>
+          <input type="radio" name="stroke" value="0">No     <br>
+          <input type="radio" name="stroke" value="9">Dont Know       <br>
+          <input type="radio" name="stroke" value="8">Refused To Answer     <br>
+        </div>
+
+        <div class="input-group">
+          <!-- TB a1_01_13-->
+          <br>
+          Did Decedent Have TB?        <br>
+          <input type="radio" name="tb" value="1" required>Yes  <br>
+          <input type="radio" name="tb" value="0">No     <br>
+          <input type="radio" name="tb" value="9">Dont Know       <br>
+          <input type="radio" name="tb" value="8">Refused To Answer     <br>
+        </div>
+
+        <div class="input-group">
+          <!-- AIDS a1_01_14-->
+          <br>
+          Did Decedent Have AIDS?        <br>
+          <input type="radio" name="aids" value="1" required>Yes  <br>
+          <input type="radio" name="aids" value="0">No     <br>
+          <input type="radio" name="aids" value="9">Dont Know       <br>
+          <input type="radio" name="aids" value="8">Refused To Answer     <br>
+        </div>
+
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <a href="#" class="btn btn-next">Next</a>
+        </div>
+
+      </div>
+
+
+
+      <div class="form-step">
+
+        <div class="input-group">
+          <!-- a6_01 -->
+          <br>Was care sought outside the home while [name] had this illness?<br>
+          <input type="radio" name="care" value="1" required>Yes  <br>
+          <input type="radio" name="care" value="0">No     <br>
+        </div>
+
+        <div class="input-group">
+          <!-- a6_02_1 -->
+          <br>Care sought - traditional healer <br>
+          <input type="radio" name="caretrad" value="1" required>Yes  <br>
+          <input type="radio" name="caretrad" value="0">No     <br>
+        </div>
+
+        <div class="input-group">
+          <!-- a6_02_4 -->
+          <br>Care sought - government hospital        <br>
+          <input type="radio" name="caregov" value="1" required>Yes  <br>
+          <input type="radio" name="caregov" value="0">No     <br>
+        </div>
+
+        <div class="input-group">
+          <!-- a6_02_6 -->
+          <br>Care sought - private hospital        <br>
+          <input type="radio" name="carepr" value="1" required>Yes  <br>
+          <input type="radio" name="carepr" value="0">No     <br>
+        </div>
+
+        <div class="input-group">
+          <!-- a6_02_10 -->
+          <br>Care sought - private physician        <br>
+          <input type="radio" name="careprp" value="1" required>Yes  <br>
+          <input type="radio" name="careprp" value="0">No     <br>
+        </div>
+
+        <div class="input-group">
+          <!-- a6_02_11 -->
+          <br>Care sought - pharmacy        <br>
+          <input type="radio" name="carep" value="1" required>Yes  <br>
+          <input type="radio" name="carep" value="0">No     <br>
+        </div>
+
+        <div class="input-group">
+          <!-- a6_04 -->
+          <br>Do you have any health records that belonged to the deceased?        <br>
+          <input type="radio" name="haverecs" value="1" required>Yes  <br>
+          <input type="radio" name="haverecs" value="0">No   <br>
+          <input type="radio" name="haverecs" value="9">Don't Know  <br>
+          <input type="radio" name="haverecs" value="8">Refused to Answer   <br>
+        </div>
+
+        <div class="input-group">
+          <!-- a6_05 -->
+          <br>Can I see the health records?        <br>
+          <input type="radio" name="seerecs" value="1" required>Yes  <br>
+          <input type="radio" name="seerecs" value="0">No   <br>
+        </div>
+
+        <div class="input-group">
+          <!-- a6_09 -->
+          <br>Was a death certificate issued?    <br>
+          <input type="radio" name="deathcert" value="1" required>Yes  <br>
+          <input type="radio" name="deathcert" value="0">No   <br>
+          <input type="radio" name="deathcert" value="9">Don't Know  <br>
+          <input type="radio" name="deathcert" value="8">Refused to Answer   <br>
+        </div>
+
+        <div class="input-group">
+          <!-- a6_10 -->
+          <br>Can I see the death certificate?        <br>
+          <input type="radio" name="see_deathcert" value="1" required>Yes  <br>
+          <input type="radio" name="see_deathcert" value="0">No   <br>
+        </div>
+
+        <div class="input-group">
+          <!-- a4_02_1 -->
+          <br>Deceased used cigarettes?        <br>
+          <input type="radio" name="cigars" value="1" required>Yes  <br>
+          <input type="radio" name="cigars" value="0">No   <br>
+        </div>
+
+        <div class="input-group">
+          <!-- a4_05 -->
+          <br>Did the deceased drink alcohol?        <br>
+          <input type="radio" name="alcohol" value="1" required>Yes  <br>
+          <input type="radio" name="alcohol" value="0">No   <br>
+          <input type="radio" name="alcohol" value="9">Don't Know  <br>
+          <input type="radio" name="alcohol" value="8">Refused to Answer   <br>
+        </div>
+
+        <div class="input-group">
+        <!-- a4_06 -->
+        <br>Would you say the amount of alcohol [name] drank daily was…?        <br>
+        <input type="radio" name="alcohol_amount" value="3" required>High  <br>
+        <input type="radio" name="alcohol_amount" value="2">Moderate   <br>
+        <input type="radio" name="alcohol_amount" value="1">Low  <br>
+        <input type="radio" name="alcohol_amount" value="9">Don't Know   <br>
+        </div>
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <a href="#" class="btn btn-next">Next</a>
+        </div>
+      </div>
+    
+
+      <div class="form-step">
+
+        <div class="input-group">
+          <!-- a2_81 -->
+          <br>Did [name] experience memory loss at any time in the three months prior to death?  <br>
+          <input type="radio" name="memloss" value="1" required>Yes  <br>
+          <input type="radio" name="memloss" value="0">No   <br>
+          <input type="radio" name="memloss" value="9">Don't Know  <br>
+        </div>
+
+        <div class="input-group">
+          <!-- a2_74 -->
+          <br>Did [name] experience a period of loss of consciousness?  <br>
+          <input type="radio" name="loss_conciousness" value="1" required>Yes  <br>
+          <input type="radio" name="loss_conciousness" value="0">No   <br>
+          <input type="radio" name="loss_conciousness" value="9">Don't Know  <br>
+        </div>
+
+        <div class="input-group">
+          <!-- a2_69 -->
+          <br>Did [name] have headaches?        <br>
+          <input type="radio" name="headaches" value="1" required>Yes  <br>
+          <input type="radio" name="headaches" value="0">No   <br>
+          <input type="radio" name="headaches" value="9">Don't Know  <br>
+        </div>
+        
+        <div class="input-group">
+          <!-- a2_53 -->
+          <br>Did [name] vomit in the week preceding the death?        <br>
+          <input type="radio" name="vomit" value="1" required>Yes  <br>
+          <input type="radio" name="vomit" value="0">No   <br>
+          <input type="radio" name="vomit" value="9">Don't Know  <br>
+          <input type="radio" name="vomit" value="8">Refused to Answer   <br>
+        </div>
+
+        <div class="input-group">
+          <!-- a2_32 -->
+          <br>Did [name] have a cough?        <br>
+          <input type="radio" name="cough" value="1" required>Yes  <br>
+          <input type="radio" name="cough" value="0">No   <br>
+          <input type="radio" name="cough" value="9">Don't Know  <br>
+          <input type="radio" name="cough" value="8">Refused to Answer   <br>
+        </div>
+
+        <div class="input-group">
+          <!-- a2_35 -->
+          <br>Did [name] cough blood?        <br>
+          <input type="radio" name="cough_blood" value="1" required>Yes  <br>
+          <input type="radio" name="cough_blood" value="0">No   <br>
+          <input type="radio" name="cough_blood" value="9">Don't Know  <br>
+          <input type="radio" name="cough_blood" value="8">Refused to Answer   <br>
+        </div>
+
+        <div class="input-group">
+          <!-- a2_36 -->
+          <br>Did [name] have difficulty breathing?        <br>
+          <input type="radio" name="breath_diff" value="1" required>Yes  <br>
+          <input type="radio" name="breath_diff" value="0">No   <br>
+          <input type="radio" name="breath_diff" value="9">Don't Know  <br>
+        </div>
+        
+        <div class="input-group">
+          <!-- a2_40 -->
+          <br>Did [name] have fast breathing?        <br>
+          <input type="radio" name="fast_breath" value="1" required>Yes  <br>
+          <input type="radio" name="fast_breath" value="0">No   <br>
+          <input type="radio" name="fast_breath" value="9">Don't Know  <br>
+        </div>
+
+        <div class="input-group">
+          <!-- a2_10 -->
+          <br>Did [name] have sores?        <br>
+          <input type="radio" name="sores" value="1" required>Yes  <br>
+          <input type="radio" name="sores" value="0">No   <br>
+          <input type="radio" name="sores" value="9">Don't Know  <br>
+          <input type="radio" name="sores" value="8">Refused to Answer  <br>
+        </div>
+        
+        <div class="input-group">
+          <!-- a2_02 -->
+          <br>Did [name] have a fever?        <br>
+          <input type="radio" name="fever" value="1" required>Yes  <br>
+          <input type="radio" name="fever" value="0">No   <br>
+          <input type="radio" name="fever" value="9">Don't Know  <br>
+          <input type="radio" name="fever" value="8">Refused to Answer  <br>
+        </div>
+
+        <div class="input-group">
+          <!-- a2_04 -->
+          <br>How severe was the fever?        <br>
+          <input type="radio" name="fever_severity" value="3" required>Severe  <br>
+          <input type="radio" name="fever_severity" value="2">Moderate   <br>
+          <input type="radio" name="fever_severity" value="1">Mild  <br>
+          <input type="radio" name="fever_severity" value="9">Don't Know  <br>
+        </div>
+
+        <div class="input-group">
+          <!-- a2_06 -->
+          <br>Did [name] have sweating with the fever?        <br>
+          <input type="radio" name="sweat_fever" value="1" required>Yes  <br>
+          <input type="radio" name="sweat_fever" value="0">No   <br>
+          <input type="radio" name="sweat_fever" value="9">Don't Know  <br>
+        </div>
+
+        <div class="input-group">
+          <!-- a2_07 -->
+          <br>Did [name] have a rash?        <br>
+          <input type="radio" name="rash" value="1" required>Yes  <br>
+          <input type="radio" name="rash" value="0">No   <br>
+          <input type="radio" name="rash" value="9">Don't Know  <br>
+        </div>
+
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <input type="submit" value="GET CoD" class="btn" />
+        </div>
+      </div>
+
+
+    </form>
+  </body>
+</html>
